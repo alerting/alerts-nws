@@ -1,0 +1,48 @@
+package codec
+
+import (
+	"bufio"
+	"bytes"
+	"encoding/json"
+	"errors"
+
+	"github.com/alerting/alerts/cap"
+	"github.com/alerting/alerts/cap/xml"
+	"github.com/golang/protobuf/jsonpb"
+)
+
+type Alert struct{}
+
+func (c *Alert) Encode(value interface{}) ([]byte, error) {
+	var alert *cap.Alert
+
+	// Handle incoming type
+	switch v := value.(type) {
+	case *capxml.Alert:
+		return json.Marshal(v)
+	case *cap.Alert:
+		alert = v
+	case cap.Alert:
+		alert = &v
+	default:
+		return nil, errors.New("Unknown type provided")
+	}
+
+	// Encode to JSON
+	enc := jsonpb.Marshaler{}
+	var buf bytes.Buffer
+	w := bufio.NewWriter(&buf)
+	err := enc.Marshal(w, alert)
+	w.Flush()
+	return buf.Bytes(), err
+}
+
+func (c *Alert) Decode(data []byte) (interface{}, error) {
+	var alert cap.Alert
+	buf := bytes.NewReader(data)
+	jd := jsonpb.Unmarshaler{
+		AllowUnknownFields: true,
+	}
+	err := jd.Unmarshal(buf, &alert)
+	return alert, err
+}
