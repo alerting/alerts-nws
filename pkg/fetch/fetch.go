@@ -98,7 +98,14 @@ func collect(ctx context.Context, conf *Config) func(ctx goka.Context, msg inter
 				log.Printf("Alert not found: %v", ref)
 				return
 			} else {
-				log.Fatal(err)
+				time.Sleep(15 * time.Second)
+				log.Println(err)
+
+				alert, err = fetch(ctx, conf, &ref)
+				if err != nil {
+					log.Println(err)
+					return
+				}
 				// TODO: Handle
 			}
 		}

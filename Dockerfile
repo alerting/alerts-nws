@@ -22,5 +22,6 @@ RUN mkdir /polygons \
     && wget -O /polygons/ugc-c.zip https://www.weather.gov/source/gis/Shapefiles/County/c_05mr19.zip \
     && wget -O /polygons/ugc-z.zip https://www.weather.gov/source/gis/Shapefiles/WSOM/z_05mr19.zip
 COPY --from=base /go/bin/alerts-nws /alerts-nws
+COPY entrypoint.sh /entrypoint.sh
 USER 10000
-ENTRYPOINT ["/alerts-nws"]
+ENTRYPOINT ["/entrypoint.sh"]
