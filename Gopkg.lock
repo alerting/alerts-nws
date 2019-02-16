@@ -19,7 +19,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:199b8045b514e56ca5de6f3b9c2ec92bebfad7818a55a611404210774855bda2"
+  digest = "1:583ccc8eb43414a4d26f46a0506398f81bf3b45f582086ea66d78d26a6f92705"
   name = "github.com/alerting/alerts"
   packages = [
     "pkg/alerts",
@@ -29,7 +29,7 @@
     "pkg/resources",
   ]
   pruneopts = "UT"
-  revision = "997adc7725ee186ae49247b3390e982126952998"
+  revision = "da6f9576dc567825af1cbbfe9c8eaf2e1fa9f089"
 
 [[projects]]
   branch = "master"
@@ -365,7 +365,7 @@
     "trace",
   ]
   pruneopts = "UT"
-  revision = "65e2d4e15006aab9813ff8769e768bbf4bb667a0"
+  revision = "3a22650c66bd7f4fb6d1e8072ffd7b75c8a27898"
 
 [[projects]]
   branch = "master"
@@ -377,14 +377,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8975c6b66d95adc1cd08820aba7ad6b60b165725a401c4177c0eaa866170bb10"
+  digest = "1:0d703f14f9bbbe1070ff0ce86d749dcbc9d68fb0ae554252c09bd4bb37a072e7"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "3b5209105503162ded1863c307ac66fec31120dd"
+  revision = "d0b11bdaac8adb652bff00e49bcacf992835621a"
 
 [[projects]]
   digest = "1:a2ab62866c75542dd18d2b069fec854577a20211d7c0ea6ae746072a1dccdd18"
@@ -415,7 +415,7 @@
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
   pruneopts = "UT"
-  revision = "4b09977fb92221987e99d190c8f88f2c92727a29"
+  revision = "bd968387e4aa590b3c6e4ba38ecac1ed314d43ad"
 
 [[projects]]
   digest = "1:9ab5a33d8cb5c120602a34d2e985ce17956a4e8c2edce7e6961568f95e40c09a"

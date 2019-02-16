@@ -33,6 +33,8 @@ var polygonsUGCZ string
 var formatCounty = "C"
 var formatPublicZone = "Z"
 
+var system string
+
 func getPolygons(filename, format string) (map[string]*capxml.Polygon, error) {
 	// Load shapefiles
 	reader, err := shp.OpenZip(filename)
@@ -110,6 +112,7 @@ var consumeCmd = &cobra.Command{
 			AlertsService: alertsService,
 			FetchTopic:    fetchTopic,
 			Polygons:      polygons,
+			System:        system,
 		}
 
 		ctx, cancel := context.WithCancel(context.Background())
@@ -153,4 +156,6 @@ func init() {
 
 	// We need the alerts service
 	consumeCmd.MarkFlagRequired("alerts-service")
+
+	consumeCmd.Flags().StringVarP(&system, "system", "s", "nws", "System name")
 }

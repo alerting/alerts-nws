@@ -29,6 +29,8 @@ type Config struct {
 	Polygons   map[string]*capxml.Polygon
 
 	AlertsService alerts.AlertsServiceClient
+
+	System string
 }
 
 func collect(ctx context.Context, conf *Config) func(ctx goka.Context, msg interface{}) {
@@ -108,6 +110,9 @@ func collect(ctx context.Context, conf *Config) func(ctx goka.Context, msg inter
 			log.Fatal(err)
 			// TODO: Handle
 		}
+
+		// Add the system
+		alert.System = conf.System
 
 		// Save the alert, if it's good
 		if (alert.Status == cap.Alert_ACTUAL || alert.Status == cap.Alert_EXCERCISE || alert.Status == cap.Alert_TEST) && (alert.MessageType == cap.Alert_ALERT || alert.MessageType == cap.Alert_UPDATE || alert.MessageType == cap.Alert_CANCEL) {
